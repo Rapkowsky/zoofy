@@ -1,11 +1,11 @@
 "use client";
 
-import UsePetContext from "@/lib/hooks";
+import { usePetContext } from "@/lib/hooks";
 import { Pet } from "@/lib/types";
 import Image from "next/image";
 
 export default function PetDetails() {
-	const { selectedPet } = UsePetContext();
+	const { selectedPet } = usePetContext();
 
 	return (
 		<section className="flex flex-col h-full w-full">
