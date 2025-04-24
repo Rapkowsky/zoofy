@@ -4,7 +4,6 @@ import { Button } from "./ui/button";
 import {
 	Dialog,
 	DialogContent,
-
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
@@ -40,7 +39,6 @@ export default function PetButton({
 				) : (
 					<Button variant="secondary">{children}</Button>
 				)}
-		
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
@@ -49,7 +47,7 @@ export default function PetButton({
 						{actionType === "add" ? "Add a new pet" : "Edit pet"}
 					</DialogTitle>
 				</DialogHeader>
-				<PetForm />
+				<PetForm actionType={actionType} />
 			</DialogContent>
 		</Dialog>
 	);
