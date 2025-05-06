@@ -1,9 +1,19 @@
 "use server";
 
+import { auth, signIn } from "@/lib/auth";
 import prisma from "@/lib/db";
 import { sleep } from "@/lib/utils";
 import { petFormSchema, petIdSchema } from "@/lib/validations";
 import { revalidatePath } from "next/cache";
+
+// User actions
+
+export async function logIn(formData: FormData) {
+	const authData = Object.fromEntries(formData.entries());
+	await signIn("credentials", authData);
+}
+
+// Pet actions
 
 export async function addPet(pet: unknown) {
 	await sleep(1000);
