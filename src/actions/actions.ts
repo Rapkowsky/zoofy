@@ -2,7 +2,7 @@
 
 import { auth, signIn, signOut } from "@/lib/auth";
 import prisma from "@/lib/db";
-import { checkAuth } from "@/lib/server-utils";
+import { checkAuth, getPetByPetId } from "@/lib/server-utils";
 import { sleep } from "@/lib/utils";
 import { petFormSchema, petIdSchema } from "@/lib/validations";
 import bcrypt from "bcryptjs";
@@ -86,11 +86,7 @@ export async function editPet(petId: unknown, newPetData: unknown) {
 	}
 
 	// authorization check
-	const pet = await prisma.pet.findUnique({
-		where: {
-			id: validatedPetId.data,
-		},
-	});
+	const pet = await getPetByPetId(validatedPetId.data);
 
 	if (!pet) {
 		return {
@@ -135,11 +131,8 @@ export async function checkoutPet(petId: unknown) {
 	}
 
 	// authorization check (users own pet)
-	const pet = await prisma.pet.findUnique({
-		where: {
-			id: validatedPetId.data,
-		},
-	});
+	const pet = await getPetByPetId(validatedPetId.data);
+
 	if (!pet) {
 		return {
 			message: "Pet not found",
