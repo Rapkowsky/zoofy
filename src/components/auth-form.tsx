@@ -1,5 +1,5 @@
 "use client";
-import { signUp } from "@/actions/actions";
+import { logIn, signUp } from "@/actions/actions";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import AuthFormBtn from "./auth-form-button";
@@ -11,8 +11,9 @@ type AuthFormProps = {
 
 export default function AuthForm({ type }: AuthFormProps) {
 	const [signUpError, dispatchSignUp] = useFormState(signUp, undefined);
+	const [logInError, dispatchlogIn] = useFormState(logIn, undefined);
 	return (
-		<form action={dispatchSignUp}>
+		<form action={type === "logIn" ? dispatchlogIn : dispatchSignUp}>
 			<div className="space-y-1 ">
 				<Label htmlFor="email">Email</Label>
 				<Input id="email" type="email" name="email" required maxLength={100} />
@@ -27,10 +28,12 @@ export default function AuthForm({ type }: AuthFormProps) {
 					maxLength={100}
 				/>
 			</div>
-
 			<AuthFormBtn type={type} />
 			{signUpError && (
 				<p className="text-red-500 text-sm mt-2">{signUpError.message}</p>
+			)}
+			{logInError && (
+				<p className="text-red-500 text-sm mt-2">{logInError.message}</p>
 			)}
 		</form>
 	);
