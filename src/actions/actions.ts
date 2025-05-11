@@ -11,6 +11,8 @@ import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 // User actions
 
 export async function logIn(prevState: unknown, formData: unknown) {
@@ -215,4 +217,28 @@ export async function checkoutPet(petId: unknown) {
 		};
 	}
 	revalidatePath("/app", "layout");
+}
+
+// payment actions
+
+export async function createCheckoutSession() {
+	//authenticate check
+	const session = await checkAuth();
+
+	//create checkout session
+	const checkoutSession = await stripe.checkout.sessions.create({
+		customer_email: session.user.email,
+		line_items: [
+			{
+				price: "price_1RNZVn2Q8XDIePPQGOi8ljqK",
+				quantity: 1,
+			},
+		],
+		mode: "payment",
+		success_url: `${process.env.CANNONICAL_URL}/payment?success=true`,
+		cancel_url: `${process.env.CANNONICAL_URL}/payment?cancelled=true`,
+	});
+
+	// redirect user
+	redirect(checkoutSession.url);
 }
