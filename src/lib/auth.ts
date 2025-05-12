@@ -51,14 +51,19 @@ const config = {
 				return false;
 			}
 
+			if (isLoggedIn && isTryingToAccessApp && !auth?.user.hasAccess) {
+				return Response.redirect(new URL("/payment", request.nextUrl));
+			}
+
 			if (isLoggedIn && isTryingToAccessApp && auth?.user.hasAccess) {
 				return true;
 			}
 
 			if (isLoggedIn && !isTryingToAccessApp) {
 				if (
-					request.nextUrl.pathname.includes("/login") ||
-					request.nextUrl.pathname.includes("/signUp")
+					(request.nextUrl.pathname.includes("/login") ||
+						request.nextUrl.pathname.includes("/signUp")) &&
+					!auth?.user.hasAccess
 				) {
 					return Response.redirect(new URL("/payment", request.nextUrl));
 				}
