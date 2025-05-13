@@ -40,8 +40,8 @@ type Props = {
 function TopBar({ pet }: Props) {
 	const { handleCheckoutPet } = usePetContext();
 	return (
-		<div className="flex flex-col xs:flex-row items-center bg-white gap-5 py-5 px-5 border-b border-light">
-			<div className="flex items-center">
+		<div className="flex flex-col xs:flex-row items-start xs:items-center bg-white gap-5 py-5 px-5 border-b border-light">
+			<div className="flex items-center ">
 				<Image
 					src={pet.imageUrl}
 					alt="Selected pet image"
