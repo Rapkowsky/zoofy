@@ -13,7 +13,7 @@ export default function PetList() {
 	);
 
 	return (
-		<ul className="bg-white border-b border-light">
+		<ul className="bg-white border-b border-light max-h-[540px] overflow-y-auto scrollbar-thin">
 			{filteredPets.map((pet) => {
 				return (
 					<li key={pet.id}>
