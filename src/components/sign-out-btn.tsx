@@ -4,17 +4,18 @@ import { Button } from "./ui/button";
 import { useTransition } from "react";
 
 export default function SignOutBtn() {
-	const [isPending, startTransition] = useTransition();
+    const [isPending, startTransition] = useTransition();
 
-	return (
-		<Button
-			disabled={isPending}
-			onClick={async () => {
-				startTransition(async () => {
-					await logOut();
-				});
-			}}>
-			Sign out
-		</Button>
-	);
+    return (
+        <Button
+            disabled={isPending}
+            onClick={async () => {
+                startTransition(async () => {
+                    await logOut();
+                });
+            }}
+        >
+            Sign out
+        </Button>
+    );
 }

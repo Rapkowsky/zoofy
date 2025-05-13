@@ -5,38 +5,39 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export default function PetList() {
-	const { pets, selectedPetId, handleChangeSelectedPetId } = usePetContext();
-	const { searchQuery } = useSearchContext();
+    const { pets, selectedPetId, handleChangeSelectedPetId } = usePetContext();
+    const { searchQuery } = useSearchContext();
 
-	const filteredPets = pets.filter((pet) =>
-		pet.name.toLowerCase().includes(searchQuery)
-	);
+    const filteredPets = pets.filter((pet) =>
+        pet.name.toLowerCase().includes(searchQuery),
+    );
 
-	return (
-		<ul className="bg-white border-b border-light max-h-[540px] overflow-y-auto scrollbar-thin">
-			{filteredPets.map((pet) => {
-				return (
-					<li key={pet.id}>
-						<button
-							onClick={() => handleChangeSelectedPetId(pet.id)}
-							className={cn(
-								"flex items-center h-[70px] w-full cursor-pointer px-5 text-base gap-3 hover:bg-[#EFF1F2] focus:bg-[#EFF1F2]",
-								{
-									"bg-[#EFF1F2]": selectedPetId === pet.id,
-								}
-							)}>
-							<Image
-								src={pet.imageUrl}
-								alt="Pet image"
-								width={45}
-								height={45}
-								className="w-[45px] h-[45px] rounded-full object-cover"
-							/>
-							<p className="font-semibold">{pet.name}</p>
-						</button>
-					</li>
-				);
-			})}
-		</ul>
-	);
+    return (
+        <ul className="scrollbar-thin max-h-[540px] overflow-y-auto border-b border-light bg-white">
+            {filteredPets.map((pet) => {
+                return (
+                    <li key={pet.id}>
+                        <button
+                            onClick={() => handleChangeSelectedPetId(pet.id)}
+                            className={cn(
+                                "flex h-[70px] w-full cursor-pointer items-center gap-3 px-5 text-base hover:bg-[#EFF1F2] focus:bg-[#EFF1F2]",
+                                {
+                                    "bg-[#EFF1F2]": selectedPetId === pet.id,
+                                },
+                            )}
+                        >
+                            <Image
+                                src={pet.imageUrl}
+                                alt="Pet image"
+                                width={45}
+                                height={45}
+                                className="h-[45px] w-[45px] rounded-full object-cover"
+                            />
+                            <p className="font-semibold">{pet.name}</p>
+                        </button>
+                    </li>
+                );
+            })}
+        </ul>
+    );
 }
