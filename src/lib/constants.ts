@@ -1,1 +1,1 @@
-export const DEFAULT_PET_IMAGE = "/public/dog-placeholder.jpg";
+export const DEFAULT_PET_IMAGE = "/dog-placeholder.jpg";
