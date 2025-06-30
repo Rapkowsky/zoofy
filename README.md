@@ -29,7 +29,7 @@
 <br />
 
 <p>
-    <img width="50%" src="/zoofy.png" />
+    <img width="50%" src="/public/zoofy.png" />
 </p>
 
 <br />
@@ -102,4 +102,4 @@
 
     Visit &nbsp;[http://localhost:3000](http://localhost:3000)&nbsp; to access your app.
 
-<br> 
+<br>
