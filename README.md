@@ -11,7 +11,7 @@
 </p>
 
 <p>
-    <img width="50%" src="./zoofy.png" />
+    <img width="50%" src="public/zoofy.png" />
 </p>
 
 <p>
