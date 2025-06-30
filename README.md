@@ -47,7 +47,7 @@
 
 <br>
 
-## <a name="local-development"> 🖥️&nbsp;&nbsp; Local Development</a>
+## <a name="local-development"> ⚙️&nbsp;&nbsp; Local Development</a>
 
 0.  **Prerequisites** <br>
     Make sure you have the following installed on your machine:
