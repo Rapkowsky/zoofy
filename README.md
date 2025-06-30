@@ -29,7 +29,7 @@
 <br />
 
 <p>
-    <img width="50%" src="/public/zoofy.png" />
+    <img width="100%" src="/public/zoofy.png" />
 </p>
 
 <br />
