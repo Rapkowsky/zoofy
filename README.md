@@ -1,4 +1,5 @@
-<h3 align="left">Zoofy (Fullstack)</h3>
+## <a> 🖥️&nbsp;&nbsp; Zoofy (Fullstack)</a>
+
 <p>
     <a href="https://rr-zoofy.vercel.app" target="_blank"
         >Live demo - see it in action</a
