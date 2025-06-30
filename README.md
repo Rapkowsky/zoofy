@@ -4,7 +4,7 @@
 
 <p>
     <img
-        src="https://skills.syvixor.com/api/icons?i=nextjs,react,ts,tailwind,shadcnui,motion,node,prisma" />
+        src="https://skills.syvixor.com/api/icons?i=nextjs,react,ts,reacthookform,zod,tailwind,shadcnui,motion,node,prisma,git,vercel" />
 </p>
 
 <p>
